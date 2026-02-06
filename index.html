@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GolStore - Camisas de Fútbol</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>GolStore</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#productos">Tienda</a></li>
+                    <li><a href="#ofertas">Ofertas</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="cart-icon">
+                <span id="cart-count">0</span>
+                🛒
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h2>Vive el fútbol con estilo</h2>
+            <p>Descubre las mejores camisas de fútbol para apoyar a tu equipo favorito.</p>
+            <button class="btn-primary" onclick="scrollToSection('productos')">Comprar ahora</button>
+        </div>
+    </section>
+
+    <!-- Productos Section -->
+    <section id="productos" class="productos">
+        <div class="container">
+            <h2>Tienda</h2>
+            <div class="productos-grid">
+                <div class="producto-card">
+                    <div class="producto-imagen">🏆</div>
+                    <h3>Equipo A</h3>
+                    <p class="precio">120.000 COP</p>
+                    <button class="btn-secondary" onclick="agregarAlCarrito('Equipo A', 120000)">Agregar al carrito</button>
+                </div>
+                <div class="producto-card">
+                    <div class="producto-imagen">⚽</div>
+                    <h3>Equipo B</h3>
+                    <p class="precio">150.000 COP</p>
+                    <button class="btn-secondary" onclick="agregarAlCarrito('Equipo B', 150000)">Agregar al carrito</button>
+                </div>
+                <div class="producto-card">
+                    <div class="producto-imagen">🎯</div>
+                    <h3>Equipo C</h3>
+                    <p class="precio">180.000 COP</p>
+                    <button class="btn-secondary" onclick="agregarAlCarrito('Equipo C', 180000)">Agregar al carrito</button>
+                </div>
+                <div class="producto-card">
+                    <div class="producto-imagen">🏅</div>
+                    <h3>Equipo D</h3>
+                    <p class="precio">100.000 COP</p>
+                    <button class="btn-secondary" onclick="agregarAlCarrito('Equipo D', 100000)">Agregar al carrito</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ofertas Section -->
+    <section id="ofertas" class="ofertas">
+        <div class="container">
+            <h2>Ofertas Especiales</h2>
+            <div class="ofertas-grid">
+                <div class="oferta-card">
+                    <div class="producto-imagen">⭐</div>
+                    <h3>Equipo E</h3>
+                    <p class="precio-original">200.000 COP</p>
+                    <p class="precio-oferta">160.000 COP</p>
+                    <button class="btn-secondary" onclick="agregarAlCarrito('Equipo E', 160000)">Agregar al carrito</button>
+                </div>
+                <div class="oferta-card">
+                    <div class="producto-imagen">🔥</div>
+                    <h3>Equipo F</h3>
+                    <p class="precio-original">180.000 COP</p>
+                    <p class="precio-oferta">140.000 COP</p>
+                    <button class="btn-secondary" onclick="agregarAlCarrito('Equipo F', 140000)">Agregar al carrito</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios Section -->
+    <section class="testimonios">
+        <div class="container">
+            <h2>Testimonios</h2>
+            <div class="testimonios-grid">
+                <div class="testimonio-card">
+                    <p>"¡Excelente calidad y entrega rápida! Mi camisa favorita."</p>
+                    <cite>- Juan Pérez</cite>
+                </div>
+                <div class="testimonio-card">
+                    <p>"GolStore tiene los mejores diseños. Altamente recomendado."</p>
+                    <cite>- María García</cite>
+                </div>
+                <div class="testimonio-card">
+                    <p>"Servicio al cliente excepcional. Volveré a comprar."</p>
+                    <cite>- Carlos López</cite>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>GolStore</h3>
+                    <p>Tu tienda de camisas de fútbol favorita.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Redes Sociales</h3>
+                    <div class="social-icons">
+                        <a href="#">📘</a>
+                        <a href="#">🐦</a>
+                        <a href="#">📷</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <p>Proyecto educativo – No es una tienda real</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
