@@ -5,66 +5,161 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GolStore - Camisas de Fútbol</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/b ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- Header -->
     <header>
-        <div class="container">
+        <div class="header-container">
             <div class="logo">
+                <i class="fas fa-futbol"></i>
                 <h1>GolStore</h1>
             </div>
             <nav>
                 <ul>
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#productos">Tienda</a></li>
-                    <li><a href="#ofertas">Ofertas</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="#inicio"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li><a href="#productos"><i class="fas fa-store"></i> Tienda</a></li>
+                    <li><a href="#ofertas"><i class="fas fa-fire"></i> Ofertas</a></li>
+                    <li><a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a></li>
                 </ul>
             </nav>
-            <div class="cart-icon">
+            <div class="cart-icon" onclick="toggleCarrito()">
                 <span id="cart-count">0</span>
-                🛒
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
             </div>
         </div>
     </header>
 
+    <!-- Carrito Flotante -->
+    <div class="carrito-flotante" id="carritoFlotante">
+        <div class="carrito-header">
+            <h3><i class="fas fa-shopping-basket"></i> Tu Carrito</h3>
+            <button class="cerrar-carrito" onclick="toggleCarrito()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="carrito-items" id="carritoItems">
+            <p class="carrito-vacio">Tu carrito está vacío</p>
+        </div>
+        <div class="carrito-footer">
+            <p>Total: <span id="carritoTotal">0 COP</span></p>
+            <button class="btn-checkout"><i class="fas fa-credit-card"></i> Finalizar Compra</button>
+        </div>
+    </div>
+
     <!-- Hero Section -->
     <section id="inicio" class="hero">
+        <div class="hero-bg">
+            <div class="hero-particles"></div>
+        </div>
         <div class="hero-content">
-            <h2>Vive el fútbol con estilo</h2>
-            <p>Descubre las mejores camisas de fútbol para apoyar a tu equipo favorito.</p>
-            <button class="btn-primary" onclick="scrollToSection('productos')">Comprar ahora</button>
+            <div class="hero-badge">
+                <i class="fas fa-star"></i> Nueva Temporada 2024
+            </div>
+            <h2 class="hero-title">
+                <span class="title-line">Vive el Fútbol</span>
+                <span class="title-line highlight">con Estilo</span>
+            </h2>
+            <p class="hero-subtitle">Descubre las mejores camisas de fútbol para apoyar a tu equipo favorito</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="scrollToSection('productos')">
+                    <i class="fas fa-shopping-bag"></i> Comprar Ahora
+                </button>
+                <button class="btn-secondary" onclick="scrollToSection('ofertas')">
+                    <i class="fas fa-fire"></i> Ver Ofertas
+                </button>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Equipos</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">10K+</span>
+                    <span class="stat-label">Clientes</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">4.9</span>
+                    <span class="stat-label">Rating</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <i class="fas fa-chevron-down"></i>
         </div>
     </section>
 
     <!-- Productos Section -->
     <section id="productos" class="productos">
         <div class="container">
-            <h2>Tienda</h2>
+            <div class="section-header">
+                <h2><i class="fas fa-tshirt"></i> Nuestra Tienda</h2>
+                <p>Las mejores camisas de tus equipos favoritos</p>
+            </div>
             <div class="productos-grid">
                 <div class="producto-card">
-                    <div class="producto-imagen">🏆</div>
-                    <h3>Equipo A</h3>
-                    <p class="precio">120.000 COP</p>
-                    <button class="btn-secondary" onclick="agregarAlCarrito('Equipo A', 120000)">Agregar al carrito</button>
+                    <div class="producto-badge nuevo">Nuevo</div>
+                    <div class="producto-imagen">
+                        <img src="imagen1.png" alt="Equipo A" onerror="this.src='https://via.placeholder.com/300x300/1a1a2e/4CAF50?text=Equipo+A'">
+                    </div>
+                    <div class="producto-info">
+                        <h3>Real Madrid</h3>
+                        <p class="producto-desc">Camisa oficial temporada 2024</p>
+                        <div class="producto-footer">
+                            <p class="precio"><span class="precio-actual">120.000</span> COP</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('Real Madrid', 120000, 'imagen1.png')">
+                                <i class="fas fa-cart-plus"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div class="producto-card">
-                    <div class="producto-imagen">⚽</div>
-                    <h3>Equipo B</h3>
-                    <p class="precio">150.000 COP</p>
-                    <button class="btn-secondary" onclick="agregarAlCarrito('Equipo B', 150000)">Agregar al carrito</button>
+                    <div class="producto-imagen">
+                        <img src="imagen2.png" alt="Equipo B" onerror="this.src='https://via.placeholder.com/300x300/1a1a2e/4CAF50?text=Equipo+B'">
+                    </div>
+                    <div class="producto-info">
+                        <h3>Barcelona</h3>
+                        <p class="producto-desc">Camisa oficial temporada 2024</p>
+                        <div class="producto-footer">
+                            <p class="precio"><span class="precio-actual">150.000</span> COP</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('Barcelona', 150000, 'imagen2.png')">
+                                <i class="fas fa-cart-plus"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div class="producto-card">
-                    <div class="producto-imagen">🎯</div>
-                    <h3>Equipo C</h3>
-                    <p class="precio">180.000 COP</p>
-                    <button class="btn-secondary" onclick="agregarAlCarrito('Equipo C', 180000)">Agregar al carrito</button>
+                    <div class="producto-badge popular"><i class="fas fa-fire"></i> Popular</div>
+                    <div class="producto-imagen">
+                        <img src="imagen3.png" alt="Equipo C" onerror="this.src='https://via.placeholder.com/300x300/1a1a2e/4CAF50?text=Equipo+C'">
+                    </div>
+                    <div class="producto-info">
+                        <h3>Manchester City</h3>
+                        <p class="producto-desc">Camisa oficial temporada 2024</p>
+                        <div class="producto-footer">
+                            <p class="precio"><span class="precio-actual">180.000</span> COP</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('Manchester City', 180000, 'imagen3.png')">
+                                <i class="fas fa-cart-plus"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div class="producto-card">
-                    <div class="producto-imagen">🏅</div>
-                    <h3>Equipo D</h3>
-                    <p class="precio">100.000 COP</p>
-                    <button class="btn-secondary" onclick="agregarAlCarrito('Equipo D', 100000)">Agregar al carrito</button>
+                    <div class="producto-imagen">
+                        <img src="imagen4.png" alt="Equipo D" onerror="this.src='https://via.placeholder.com/300x300/1a1a2e/4CAF50?text=Equipo+D'">
+                    </div>
+                    <div class="producto-info">
+                        <h3>Bayern Munich</h3>
+                        <p class="producto-desc">Camisa oficial temporada 2024</p>
+                        <div class="producto-footer">
+                            <p class="precio"><span class="precio-actual">100.000</span> COP</p>
+                            <button class="btn-agregar" onclick="agregarAlCarrito('Bayern Munich', 100000, 'imagen4.png')">
+                                <i class="fas fa-cart-plus"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -73,21 +168,67 @@
     <!-- Ofertas Section -->
     <section id="ofertas" class="ofertas">
         <div class="container">
-            <h2>Ofertas Especiales</h2>
+            <div class="section-header">
+                <h2><i class="fas fa-bolt"></i> Ofertas Especiales</h2>
+                <p>¡No te pierdas estas promociones exclusivas!</p>
+            </div>
             <div class="ofertas-grid">
                 <div class="oferta-card">
-                    <div class="producto-imagen">⭐</div>
-                    <h3>Equipo E</h3>
-                    <p class="precio-original">200.000 COP</p>
-                    <p class="precio-oferta">160.000 COP</p>
-                    <button class="btn-secondary" onclick="agregarAlCarrito('Equipo E', 160000)">Agregar al carrito</button>
+                    <div class="oferta-badge">
+                        <span>-20%</span>
+                    </div>
+                    <div class="oferta-imagen">
+                        <img src="imagen5.png" alt="Equipo E" onerror="this.src='https://via.placeholder.com/300x300/ff6b6b/fff?text=Equipo+E'">
+                    </div>
+                    <div class="oferta-info">
+                        <h3>Paris Saint-Germain</h3>
+                        <p class="oferta-desc">Edición especial</p>
+                        <div class="precios">
+                            <span class="precio-original">200.000 COP</span>
+                            <span class="precio-oferta">160.000 COP</span>
+                        </div>
+                        <button class="btn-agregar oferta" onclick="agregarAlCarrito('PSG', 160000, 'imagen5.png')">
+                            <i class="fas fa-cart-plus"></i> Agregar al Carrito
+                        </button>
+                    </div>
                 </div>
                 <div class="oferta-card">
-                    <div class="producto-imagen">🔥</div>
-                    <h3>Equipo F</h3>
-                    <p class="precio-original">180.000 COP</p>
-                    <p class="precio-oferta">140.000 COP</p>
-                    <button class="btn-secondary" onclick="agregarAlCarrito('Equipo F', 140000)">Agregar al carrito</button>
+                    <div class="oferta-badge">
+                        <span>-25%</span>
+                    </div>
+                    <div class="oferta-imagen">
+                        <img src="imagen6.png" alt="Equipo F" onerror="this.src='https://via.placeholder.com/300x300/ff6b6b/fff?text=Equipo+F'">
+                    </div>
+                    <div class="oferta-info">
+                        <h3>Juventus</h3>
+                        <p class="oferta-desc">Últimas unidades</p>
+                        <div class="precios">
+                            <span class="precio-original">180.000 COP</span>
+                            <span class="precio-oferta">140.000 COP</span>
+                        </div>
+                        <button class="btn-agregar oferta" onclick="agregarAlCarrito('Juventus', 140000, 'imagen6.png')">
+                            <i class="fas fa-cart-plus"></i> Agregar al Carrito
+                        </button>
+                    </div>
+                </div>
+                <div class="oferta-card">
+                    <div class="oferta-badge">
+                        <span>-30%</span>
+                    </div>
+                    <div class="oferta-imagen">
+                        <img src="imagen7.png" alt="Equipo G" onerror="this.src='https://via.placeholder.com/300x300/ff6b6b/fff?text=Equipo+G'">
+                    </div>
+                    <div class="oferta-info">
+                        <h3>Liverpool</h3>
+                        <p class="oferta-desc">Última oportunidad</p>
+                        <div class="precios">
+                            <span class="precio-original">150.000 COP</span>
+                            <span class="precio-oferta">105.000 COP</span>
+                        </div>
+                        <button class="btn-agregar oferta" onclick="agregarAlCarrito('Liverpool', 105000, 'imagen7.png')">
+                            <i class="fas fa-cart-plus"></i> Agregar al Carrito
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -96,18 +237,57 @@
     <!-- Testimonios Section -->
     <section class="testimonios">
         <div class="container">
-            <h2>Testimonios</h2>
+            <div class="section-header">
+                <h2><i class="fas fa-quote-left"></i> Lo que dicen nuestros clientes</h2>
+                <p>Miles de personas ya confían en GolStore</p>
+            </div>
             <div class="testimonios-grid">
                 <div class="testimonio-card">
-                    <p>"¡Excelente calidad y entrega rápida! Mi camisa favorita."</p>
+                    <div class="testimonio-header">
+                        <div class="testimonio-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="testimonio-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="testimonio-texto">"¡Excelente calidad y entrega rápida! La camisa es exactamente como en las fotos. Muy satisfecho con mi compra."</p>
                     <cite>- Juan Pérez</cite>
                 </div>
                 <div class="testimonio-card">
-                    <p>"GolStore tiene los mejores diseños. Altamente recomendado."</p>
+                    <div class="testimonio-header">
+                        <div class="testimonio-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="testimonio-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="testimonio-texto">"GolStore tiene los mejores diseños. La tela es de excelente calidad y el envío fue muy rápido. ¡Totalmente recomendado!"</p>
                     <cite>- María García</cite>
                 </div>
                 <div class="testimonio-card">
-                    <p>"Servicio al cliente excepcional. Volveré a comprar."</p>
+                    <div class="testimonio-header">
+                        <div class="testimonio-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="testimonio-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="testimonio-texto">"Servicio al cliente excepcional. Respondieron todas mis dudas y la camisa llegó perfecta. Volveré a comprar sin duda."</p>
                     <cite>- Carlos López</cite>
                 </div>
             </div>
@@ -116,26 +296,57 @@
 
     <!-- Footer -->
     <footer id="contacto">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
+        <div class="footer-wave">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#1a1a2e" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,165.3C384,171,480,149,576,138.7C672,128,768,128,864,149.3C960,171,1056,213,1152,218.7C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <i class="fas fa-futbol"></i>
                     <h3>GolStore</h3>
-                    <p>Tu tienda de camisas de fútbol favorita.</p>
                 </div>
-                <div class="footer-section">
-                    <h3>Redes Sociales</h3>
-                    <div class="social-icons">
-                        <a href="#">📘</a>
-                        <a href="#">🐦</a>
-                        <a href="#">📷</a>
-                    </div>
+                <p>Tu tienda de camisas de fútbol favorita. Calidad garantizada en cada producto.</p>
+                <div class="footer-features">
+                    <span><i class="fas fa-shipping-fast"></i> Envío gratis</span>
+                    <span><i class="fas fa-shield-alt"></i> Compra segura</span>
                 </div>
-                <div class="footer-section">
-                    <p>Proyecto educativo – No es una tienda real</p>
+            </div>
+            <div class="footer-section">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="#inicio"><i class="fas fa-chevron-right"></i> Inicio</a></li>
+                    <li><a href="#productos"><i class="fas fa-chevron-right"></i> Tienda</a></li>
+                    <li><a href="#ofertas"><i class="fas fa-chevron-right"></i> Ofertas</a></li>
+                    <li><a href="#contacto"><i class="fas fa-chevron-right"></i> Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contáctanos</h3>
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> contacto@golstore.com</p>
+                    <p><i class="fas fa-phone"></i> +57 300 123 4567</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Bogotá, Colombia</p>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Síguenos</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-youtube"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
         </div>
+        <div class="footer-bottom">
+            <p>© 2024 GolStore. Todos los derechos reservados. | <span>Proyecto educativo – No es una tienda real</span></p>
+        </div>
     </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast-container" id="toastContainer"></div>
 
     <script src="script.js"></script>
 </body>
